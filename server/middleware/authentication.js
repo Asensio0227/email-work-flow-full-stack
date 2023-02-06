@@ -36,7 +36,7 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-const authorizePermissions = (...isAdmin) => {
+const authorizedPermissions = (...isAdmin) => {
   return (req, res, next) => {
     if (!isAdmin.includes(req.user.isAdmin)) {
       throw new CustomError.UnauthorizedError(
@@ -49,5 +49,5 @@ const authorizePermissions = (...isAdmin) => {
 
 module.exports = {
   authenticateUser,
-  authorizePermissions,
+  authorizedPermissions,
 };
